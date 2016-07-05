@@ -5,20 +5,23 @@ Jira
 Sync calls
 -------------
 
-- It means that code execution will wait for API call to return before continuing. Until a response is returned by API, your application will not execute further.
-- Example Usage:
-	* getting a list of changes such as
-		+ issue has been added, updated, deleted
-		+ comment has been added
-- sync calls can be:
-	* unidirectional:
+1. It means that code execution will wait for API call to return before continuing. Until a response is returned by API, your application will not execute further.
+
+2. Example Usage:
+	- getting a list of changes such as
+		* issue has been added, updated, deleted
+		* comment has been added
+
+3. sync calls can be:
+	- unidirectional:
 		GET/POST
-	* bidirectional:
+	- bidirectional:
 		GET+POST
-- activity stream:
-	* list of events
-	* recent activities by current user
-	* we can add activity stream using rest api
+
+4. activity stream:
+	- list of events
+	- recent activities by current user
+	- we can add activity stream using rest api
 
 Authentication
 -------------------
