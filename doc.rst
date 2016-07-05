@@ -1,6 +1,9 @@
+=========
 Jira 
+=========
 
-1) Sync calls
+Sync calls
+-------------
 
 - It means that code execution will wait for API call to return before continuing. Until a response is returned by API, your application will not execute further.
 - Example Usage:
@@ -17,7 +20,8 @@ Jira
 	* recent activities by current user
 	* we can add activity stream using rest api
 
-2) Authentication
+Authentication
+-------------------
 
 - There are 3 authentication models:
 	* basic authentication		
