@@ -35,6 +35,7 @@ Authentication
 2. Basic authentication
 	- Basic access authentication is a method to authenticate on HTTP using username and password
 	- Usage example:
+::
 	curl -D- -u <username:password> -X GET -H "Content-Type: application/json" <url>
 
 	- If you simply specify the username, curl will prompt for password
@@ -51,13 +52,6 @@ Authentication
 3. Cookie based authentication
 	- If you are accessing Jira without logging in, you are accessing it anonymously
 	- If you do not have permission to view something, you wont be able to view it using Jira REST Api either
-	- Working:
-		* client creates a new session via JIRA REST API
-		* JIRA returns session object. Session object contains:
-			+ information about this session
-			+ session cookie
-		* Client stores this session object
-		* Client sets the cookie in header for all subsequent request to JIRA API
 	- benefits:
 		* performance -> not having to make multiple authentication calls
 	- disadvantage:
@@ -65,3 +59,27 @@ Authentication
 			cookies can be hijacked if handled improperly
 	- working:
 		* create a new session
+			+ Post user credentials to session resource
+				Example of session resource:
+					http://jira.example.com:8090/jira/rest/auth/1/session
+				Example credentials:
+					{ "username": "myuser", "password": "mypassword" }
+		
+		
+			+ JIRA returns session object.
+			+ Session object contains:
+                        	information about this session
+                        	session cookie
+		* store session object on client
+		* Add cookie name and value in 'cookie' field in header of your request
+			Example:
+				headers: {cookie: JSESSIONID=6E3487971234567896704A9EB4AE501F}
+
+	- cookie expiration:
+		* If cookie has expired, it gives 401 error response
+		
+	- This authentication model should be used when:
+		* script involving REST API calls runs only for a few minutes
+	
+ 	
+		
