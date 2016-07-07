@@ -23,6 +23,27 @@ Sync calls
 	- recent activities by current user
 	- we can add activity stream using rest api
 
+Query
+-----------
+
+1. There are two ways:
+	- Basic Search 
+		* filter your search results using a user-friendly interface
+	- Advanced Search
+		* build structured queries using Jira Query Language (JQL)
+		* you can save your search
+		* Any query has 3 basic parts:
+			+ field:
+				like priority, fixVersion, issue type
+			+ Operator:
+				they relate field to value. 
+				can be =, !=, <, >
+			+ Value:
+				actual data in query.
+				item for which we are looking.
+			+ Keyword:
+				specific words that have special meaning
+				like AND, OR
 Authentication
 -------------------
 
@@ -35,7 +56,7 @@ Authentication
 2. Basic authentication
 	- Basic access authentication is a method to authenticate on HTTP using username and password
 	- Usage example:
-::
+
 	curl -D- -u <username:password> -X GET -H "Content-Type: application/json" <url>
 
 	- If you simply specify the username, curl will prompt for password
@@ -81,5 +102,12 @@ Authentication
 	- This authentication model should be used when:
 		* script involving REST API calls runs only for a few minutes
 	
- 	
-		
+4. OAuth
+
+	- Open standard of Authorization
+	- A way through which users can log in using third party websites
+	- Working:
+		* obtain request token from JIRA
+		* authorize this token
+		* swap request token with access token
+		* make authentication request to a REST end point
