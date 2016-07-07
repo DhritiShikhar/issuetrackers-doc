@@ -28,6 +28,12 @@ Callback support
 
 1. done through the use of jira webhooks which can be created using rest api
 
+2. When webhook is triggered, it sends a JSON callback containing:
+	- event id
+	- timestamp
+	- information about entity(issue, project etc) associated with event
+	- additional information depending on type of event 
+
 Query
 -----------
 
@@ -134,7 +140,28 @@ Authentication
 		* swap request token with access token
 		* make authentication request to a REST end point
 
-Required Auth Levels
+Authorization Levels
 ---------------------
 
-1. for query, lookup, callback
+1. Browse projects and Issues
+	- Anyone
+
+2. View commit information
+	- Anyone
+
+3. Create Issues
+	- Registered user
+
+4. Add comments
+	- Registered Users
+
+5. lookup:
+	- Anyone
+
+6. Query:
+	- Anyone
+	- no field level security
+
+7. callback:
+	- Register via JIRA REST API
+	- user must have Administrators global permission
