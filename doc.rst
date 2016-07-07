@@ -23,6 +23,11 @@ Sync calls
 	- recent activities by current user
 	- we can add activity stream using rest api
 
+Callback support
+-----------------
+
+1. done through the use of jira webhooks which can be created using rest api
+
 Query
 -----------
 
@@ -44,6 +49,24 @@ Query
 			+ Keyword:
 				specific words that have special meaning
 				like AND, OR
+
+Individual lookup
+------------------
+
+1. There is no direct method to get all users in Jira REST Api.
+
+2. You can search for a particular user using string:
+	- Example:
+		https://servername/rest/api/2/user/search?username=a
+		this returns all users that have "a" somewhere in their name
+
+3. Workaround:
+	- You can get list of all users belonging to a group (although you cannot get list of all groups)
+	- You can get list of all users which can be assigned to a project
+	
+Collect sample data
+-------------------
+
 Authentication
 -------------------
 
@@ -103,7 +126,6 @@ Authentication
 		* script involving REST API calls runs only for a few minutes
 	
 4. OAuth
-
 	- Open standard of Authorization
 	- A way through which users can log in using third party websites
 	- Working:
@@ -111,3 +133,8 @@ Authentication
 		* authorize this token
 		* swap request token with access token
 		* make authentication request to a REST end point
+
+Required Auth Levels
+---------------------
+
+1. for query, lookup, callback
