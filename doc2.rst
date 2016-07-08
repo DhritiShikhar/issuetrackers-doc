@@ -7,7 +7,8 @@ Bugzilla exposes its api through xmlrpc protocol
 Sync Calls only
 -------------------
 
-
+1. REST Api doesnot support event notification:
+	https://bugzilla.redhat.com/show_bug.cgi?id=978953 
 
 Callback Support
 -------------------
@@ -29,6 +30,23 @@ Query
 
 5. Querying can be done using MySQL 
 
+6. You can get information about a particular bug using its:
+	- id
+	- alias
+
+Example:
+	- GET /rest/bug/(id_or_alias)
+	- GET /rest/bug?product=Foo&product=Bar
+
+7. You can get history of a specific bug:
+	- GET /rest/bug/(id)/history
+	- GET /rest/bug/(id)/history?new_since=YYYY-MM-DD
+
+8. Advanced Search:
+	use query parameters in the URL as your query for REST call
+
+9. To get all comments:
+	GET /rest/bug/(id_or_alias)/comment
 
 Individual lookup
 -------------------
@@ -37,6 +55,7 @@ Individual lookup
 	- ID
 	- real name
 	- email address
+	- match
 
 
 Collect sample data
@@ -78,4 +97,8 @@ Authorization Level
 4. There are two types of groups:
 	- Generic group
 	- Product Based group
+
+5. There are two anchors in Bugzilla:
+	- Assignee -> person who will fix the bug
+	- Reporter -> person who added the bug
 
