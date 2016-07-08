@@ -15,6 +15,19 @@ Callback Support
 Query
 -------------------
 
+1. You can save the query as Remembered Query
+
+2. Advanced querying is done by Boolean chart
+
+3. When you run a search, list of all matching bugs will be returned. Default search is to return all open bugs on the system -> not advised. 
+
+4. Quicksearch:
+	- single text box query
+	- uses metacharacters to indicate what is to be searched
+	- foo|bar will search foo OR bar in summary and status of bug
+	- :Bazproduct will search only in that product
+
+5. Querying can be done using MySQL 
 
 
 Individual lookup
@@ -60,7 +73,7 @@ Authorization Level
 	- who have "admin" priviledges can:
 		edit fields, groups -> total control over Bugzilla
 
-3. Groups allow to isolate bugs/ products that should be seen by certain people.
+3. Groups restrict visibility of bugs to a set of specific users.
 
 4. There are two types of groups:
 	- Generic group
