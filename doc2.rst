@@ -75,6 +75,8 @@ Auth models
 	- If you have two-factor authentication on your bugzilla account, then create a new API key and pass it to each request
 		requests.get('https://bugzilla.mozilla.org/rest/bug', params={'id': '1214433', 'api_key': 'xyz'})
 
+3. cookie authentication is not accepted.
+
 Authorization Level
 --------------------
 
