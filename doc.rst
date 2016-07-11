@@ -70,12 +70,13 @@ Authentication
 		
 
 2. Basic authentication
-	- Basic access authentication is a method to authenticate on HTTP using username and password
+	- Authenticate on HTTP using username and password
 	- Usage example:
+::
 
 	curl -D- -u <username:password> -X GET -H "Content-Type: application/json" <url>
 
-	- If you simply specify the username, curl will prompt for password
+	- If you simply specify the username, curl will prompt for password. It doesnot give error
 
 	- JIRA permits a default level of access to anonymous users. It doesnot supply a typical authentication challenge.
 
@@ -98,8 +99,13 @@ Authentication
 		* create a new session
 			+ Post user credentials to session resource
 				Example of session resource:
+::
+
 					http://jira.example.com:8090/jira/rest/auth/1/session
+
 				Example credentials:
+::
+
 					{ "username": "myuser", "password": "mypassword" }
 		
 		
@@ -110,6 +116,8 @@ Authentication
 		* store session object on client
 		* Add cookie name and value in 'cookie' field in header of your request
 			Example:
+::
+
 				headers: {cookie: JSESSIONID=6E3487971234567896704A9EB4AE501F}
 
 	- cookie expiration:
@@ -130,25 +138,18 @@ Authentication
 Authorization Levels
 ---------------------
 
-1. Browse projects and Issues
-	- Anyone
-
-2. View commit information
-	- Anyone
-
-3. Create Issues
-	- Registered user
-
-4. Add comments
-	- Registered Users
-
-5. lookup:
-	- Anyone
-
-6. Query:
-	- Anyone
-	- no field level security
-
-7. callback:
-	- Register via JIRA REST API
-	- user must have Administrators global permission
++----------------------------+-----------------------------------------------------------------------------+
+|Browse projects and issues  |Anyone                                                                       |                         
++----------------------------+-----------------------------------------------------------------------------+
+|View commit information     |Anyone                                                                       |
++----------------------------+-----------------------------------------------------------------------------+
+|Create issues	             |Registered user                                                              |
++----------------------------+-----------------------------------------------------------------------------+
+|Add comments                |Registered user                                                              |
++----------------------------+-----------------------------------------------------------------------------+
+|lookup                      |Anyone                                                                       | 
++----------------------------+-----------------------------------------------------------------------------+
+|Query                       |Anyone. No field level security.                                             |
++----------------------------+-----------------------------------------------------------------------------+
+|Callback                    |Register via JIRA REST API. User must have administrators global permission. |
++----------------------------+-----------------------------------------------------------------------------+
