@@ -50,6 +50,14 @@ Individual lookup
 	- Workaround:
 		* You can get list of all users belonging to a group (although you cannot get list of all groups)
 		* You can get list of all users which can be assigned to a project
+
+2. Issue:
+	- Yes. We can get all issue data through issue id.
+		* /rest/api/2/issue/{issueId}
+
+3. Comments:
+	- Yes. We can pull all comments for each issue in each project and checking them one by one using comment id.
+		* /rest/api/2/issue/{issueId}/comment/{id}
 	
 Collect sample data
 -------------------
@@ -119,6 +127,12 @@ Authentication
 4. OAuth
 	- Open standard of Authorization
 	- A way through which users can log in using third party websites
+	- Registering your application via OAuth:
+		* In the "Applications Links administration" screen, create a new application link
+		* Enter correct URL to your client
+		* If your client can be reached via HTTP, choose Generic Application Type
+		* Configure your client:
+			+ In "incoming authentication configuration", select OAuth
 	- Working:
 		* obtain request token from JIRA
 		* authorize this token
