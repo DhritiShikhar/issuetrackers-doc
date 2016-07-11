@@ -7,28 +7,23 @@ Bugzilla exposes its api through xmlrpc protocol
 Sync Calls only
 -------------------
 
-1. REST Api doesnot support event notification:
-	https://bugzilla.redhat.com/show_bug.cgi?id=978953 
+1. Run an external program to query Bugzilla api, check the changes, sync to your application.
+	- This approach requires you to implement the logic that the issue has been updated
+	Bugzilla allows you to retrieve history of a bug. 
 
 Callback Support
 -------------------
 
+1. REDHAT REST Api doesnot support event notification:
+        https://bugzilla.redhat.com/show_bug.cgi?id=978953
+
+
 Query
 -------------------
 
-1. You can save the query as Remembered Query
+1. Bugzilla supports MYSQL queries.
 
-2. Advanced querying is done by Boolean chart
-
-3. When you run a search, list of all matching bugs will be returned. Default search is to return all open bugs on the system -> not advised. 
-
-4. Quicksearch:
-	- single text box query
-	- uses metacharacters to indicate what is to be searched
-	- foo|bar will search foo OR bar in summary and status of bug
-	- :Bazproduct will search only in that product
-
-5. Querying can be done using MySQL 
+1. You can save the search as Remembered search and query it. 
 
 6. You can get information about a particular bug using its:
 	- id
@@ -45,18 +40,19 @@ Example:
 8. Advanced Search:
 	use query parameters in the URL as your query for REST call
 
-9. To get all comments:
-	GET /rest/bug/(id_or_alias)/comment
-
 Individual lookup
 -------------------
 
-1. You can search a user based on:
-	- ID
-	- real name
-	- email address
-	- match
+1. User:
+	-You can search a user based on:
+		* ID
+		* real name
+		* email address
+		* match
 
+2. Issue
+
+3. Comment
 
 Collect sample data
 --------------------
@@ -83,24 +79,21 @@ Authorization Level
 1. Permission to do stuff in Bugzilla are defined by groups and Bugzilla users get membership to certain groups manually or automatically
 
 2. Administrators:
-	- who have "editbugs" priviledges can:
-		edit all bug fields
-	- who have "editkeywords" priviledges can:
-		create, destroy, edit keywords
-	- who have "editusers" priviledges can:
-		create, update, block user profiles
-	- who have "canconfirm" priviledges can:
-		confirm a bug or mark it as duplicate
-	- who have "admin" priviledges can:
-		edit fields, groups -> total control over Bugzilla
 
-3. Groups restrict visibility of bugs to a set of specific users.
++----------------------------------------+-------------------------------------------------------+
+|who have "editbugs" priviledges         |can edit all bug fields                                |
++----------------------------------------+-------------------------------------------------------+
+|who have "editkeywords" priviledges     |can create, destroy, edit keywords                     |
++----------------------------------------+-------------------------------------------------------+
+|who have "editusers" priviledges        |can create, update, block user profiles                |
++----------------------------------------+-------------------------------------------------------+
+|who have "canconfirm" priviledges       |can confirm a bug or mark it as duplicate              |
++----------------------------------------+-------------------------------------------------------+
+|who have "admin" priviledges            |can edit fields, groups -> total control over Bugzilla |
++----------------------------------------+-------------------------------------------------------+
 
-4. There are two types of groups:
-	- Generic group
-	- Product Based group
-
-5. There are two anchors in Bugzilla:
-	- Assignee -> person who will fix the bug
-	- Reporter -> person who added the bug
-
+3. Groups:
+	- restrict visibility of bugs to a set of specific users.
+	- Types:
+		* Generic group
+		* Product-based group
