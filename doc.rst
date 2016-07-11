@@ -5,23 +5,15 @@ Jira
 Sync calls
 -------------
 
-1. It means that code execution will wait for API call to return before continuing. Until a response is returned by API, your application will not execute further.
+1. Run an external program to query Jira using REST, check the changes, sync to your application.
+	- This approach requires you to implement the logic that the issue has been updated
+	- load on Jira for each polling.
 
-2. Example Usage:
-	- getting a list of changes such as
-		* issue has been added, updated, deleted
-		* comment has been added
-
-3. sync calls can be:
-	- unidirectional:
-		GET/POST
-	- bidirectional:
-		GET+POST
-
-4. activity stream:
-	- list of events
-	- recent activities by current user
-	- we can add activity stream using rest api
+2. Jira Command Line Interface
+	- good functionality
+	- launching the process every time can be a bit of a burden
+	- easy to debug and maintain
+	- recommended approach	
 
 Callback support
 -----------------
