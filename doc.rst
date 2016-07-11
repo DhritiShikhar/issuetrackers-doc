@@ -27,43 +27,38 @@ Callback support
 	- additional information depending on type of event 
 
 Query
------------
+---------
 
-1. There are two ways:
-	- Basic Search 
-		* filter your search results using a user-friendly interface
-	- Advanced Search
-		* build structured queries using Jira Query Language (JQL)
-		* you can save your search
-		* Any query has 3 basic parts:
-			+ field:
-				like priority, fixVersion, issue type
-			+ Operator:
-				they relate field to value. 
-				can be =, !=, <, >
-			+ Value:
-				actual data in query.
-				item for which we are looking.
-			+ Keyword:
-				specific words that have special meaning
-				like AND, OR
+1. Jira REST API allows you to send a JQL query and recieve a subset of issues.
+
+3. We can:
+	- perform text search
+	- run saved search
 
 Individual lookup
 ------------------
 
-1. There is no direct method to get all users in Jira REST Api.
+1. User: 
+	-There is no direct method to get all users in Jira REST Api.
 
-2. You can search for a particular user using string:
-	- Example:
-		https://servername/rest/api/2/user/search?username=a
-		this returns all users that have "a" somewhere in their name
+	- You can search for a particular user using string:
+	
+	Example:
+	https://servername/rest/api/2/user/search?username=a
+	this returns all users that have "a" somewhere in their name
 
-3. Workaround:
-	- You can get list of all users belonging to a group (although you cannot get list of all groups)
-	- You can get list of all users which can be assigned to a project
+	- Workaround:
+		* You can get list of all users belonging to a group (although you cannot get list of all groups)
+		* You can get list of all users which can be assigned to a project
 	
 Collect sample data
 -------------------
+
+::
+
+	>>curl -u username:password -X GET -H "Content-Type: application/json" https://issues.jboss.org/rest/api/2/issue/12406319?fields=status
+	{"expand":"renderedFields,names,schema,transitions,operations,editmeta,changelog","id":"12406319","self":"https://issues.jboss.org/rest/api/2/issue/12406319","key":"ARQ-88","fields":{"status":{"self":"https://issues.jboss.org/rest/api/2/status/6","description":"The issue is considered finished, the resolution is correct. Issues which are not closed can be reopened.","iconUrl":"https://issues.jboss.org/images/icons/statuses/closed.png","name":"Closed","id":"6","statusCategory":{"self":"https://issues.jboss.org/rest/api/2/statuscategory/3","id":3,"key":"done","colorName":"green","name":"Done"}}}
+
 
 Authentication
 -------------------
