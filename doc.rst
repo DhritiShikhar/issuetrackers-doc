@@ -72,7 +72,6 @@ Authentication
 2. Basic authentication
 	- Authenticate on HTTP using username and password
 	- Usage example:
-::
 
 	curl -D- -u <username:password> -X GET -H "Content-Type: application/json" <url>
 
@@ -99,16 +98,9 @@ Authentication
 		* create a new session
 			+ Post user credentials to session resource
 				Example of session resource:
-::
-
 					http://jira.example.com:8090/jira/rest/auth/1/session
-
 				Example credentials:
-::
-
 					{ "username": "myuser", "password": "mypassword" }
-		
-		
 			+ JIRA returns session object.
 			+ Session object contains:
                         	information about this session
@@ -116,8 +108,6 @@ Authentication
 		* store session object on client
 		* Add cookie name and value in 'cookie' field in header of your request
 			Example:
-::
-
 				headers: {cookie: JSESSIONID=6E3487971234567896704A9EB4AE501F}
 
 	- cookie expiration:
